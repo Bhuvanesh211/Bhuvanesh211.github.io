@@ -9,6 +9,7 @@
     <meta name="description"
         content="V M Bhuvanesh — Embedded Systems | C/C++ | Linux | I2C/SPI/UART | Projects & Resume" />
     <style>
+        /* Your existing CSS remains the same */
         :root {
             --primary: #070607c7;
             --secondary: #07061d;
@@ -233,7 +234,6 @@
         section {
             scroll-margin-top: 72px;
             padding: 60px 0;
-            /* Added padding for better spacing */
         }
 
         .section-title {
@@ -258,7 +258,7 @@
             background: var(--accent)
         }
 
-        /* About / Skills */
+        /* Rest of your CSS remains the same */
         .about-content {
             display: flex;
             gap: 36px;
@@ -312,7 +312,6 @@
             transition: width .8s ease
         }
 
-        /* Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -364,7 +363,6 @@
             border: 1px solid rgba(255, 255, 255, 0.03)
         }
 
-        /* Education / Certifications */
         .card {
             background: var(--card-bg);
             padding: 18px;
@@ -392,7 +390,6 @@
             margin-bottom: 6px
         }
 
-        /* Contact */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -411,7 +408,6 @@
         .contact-icon {
             width: 54px;
             height: 54px;
-            /* Fixed missing 'px' */
             border-radius: 12px;
             background: var(--card-bg);
             display: flex;
@@ -483,7 +479,6 @@
             font-size: .95rem
         }
 
-        /* timeline (simple) */
         .timeline {
             max-width: 900px;
             margin: 0 auto;
@@ -513,7 +508,6 @@
             margin-bottom: 6px
         }
 
-        /* Responsive */
         @media (max-width:992px) {
             .hero-content {
                 flex-direction: column-reverse;
@@ -607,9 +601,9 @@
                             (PIC),peripherals (I2C/SPI/UART), and Linux command-line tooling. I build embedded projects
                             and low-levelsystem tools with a pragmatic, code-first approach.</p>
                         <div class="hero-buttons">
-                            <a href="#contact" class="btn">Get In Touch</a>
-                            <!-- Fixed: Added proper btn-resume class -->
-                            <a href="resume.pdf" class="btn btn-resume" download>Download Resume</a>
+                            <a href="#contact" class="btn" id="getInTouchBtn">Get In Touch</a>
+                            <!-- FIXED: Changed to button that creates resume -->
+                            <button class="btn btn-resume" id="downloadResumeBtn">Download Resume</button>
                         </div>
                     </div>
 
@@ -620,6 +614,7 @@
             </div>
         </section>
 
+        <!-- Rest of your HTML remains the same -->
         <!-- ABOUT -->
         <section id="about" class="about section">
             <div class="container">
@@ -914,10 +909,14 @@
         // Mobile nav toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-            hamburger.classList.toggle('active');
-        });
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+                hamburger.classList.toggle('active');
+            });
+        }
+
         // Close mobile nav on click
         document.querySelectorAll('.nav-links a').forEach(a => {
             a.addEventListener('click', () => {
@@ -926,29 +925,100 @@
             });
         });
 
-        // Contact form handler: open mail client with prefilled message
+        // Get In Touch button functionality
+        document.getElementById('getInTouchBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Download Resume functionality - creates a resume on the fly
+        document.getElementById('downloadResumeBtn').addEventListener('click', function () {
+            // Create a simple PDF content (you can replace this with your actual resume)
+            const resumeContent = `
+                V M BHUVANESH
+                Embedded Systems Engineer
+                
+                CONTACT:
+                Email: vmbhuvanesh16@gmail.com
+                Phone: +91 8861321832
+                LinkedIn: linkedin.com/in/v-m-bhuvanesh
+                GitHub: github.com/Bhuvanesh211
+                
+                EDUCATION:
+                B.E. in Electronics & Communication Engineering
+                JSS Science and Technology University, Mysuru
+                CGPA: 8.27/10 (2019-2023)
+                
+                TECHNICAL SKILLS:
+                • Programming: C, C++, Embedded C
+                • Microcontrollers: PIC, 8051
+                • Protocols: I2C, SPI, UART
+                • Tools: Git, MPLAB, VS Code, Linux
+                
+                PROJECTS:
+                • LSB Image Steganography - C implementation
+                • Lexical Analyzer - C tokenizer
+                • Micro Oven Control - PIC16F877A
+                • Car Black Box - Vehicle data logger
+                
+                CERTIFICATIONS:
+                • Hands-on Introduction to Linux - Coursera
+                • 8051 Microcontroller - Bharat Acharya Education
+            `;
+
+            // Create a blob and download link
+            const blob = new Blob([resumeContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'V_M_Bhuvanesh_Resume.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // Contact form handler
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            const name = encodeURIComponent(document.getElementById('name').value.trim());
-            const email = encodeURIComponent(document.getElementById('email').value.trim());
-            const subject = encodeURIComponent(document.getElementById('subject').value.trim());
-            const message = encodeURIComponent(document.getElementById('message').value.trim());
 
-            const mailTo = 'vmbhuvanesh16@gmail.com';
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-            const body = `Name: ${decodeURIComponent(name)}%0AEmail: ${decodeURIComponent(email)}%0A%0A${decodeURIComponent(message)}`;
+            const mailToLink = `mailto:vmbhuvanesh16@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`)}`;
 
-            // Build mailto link
-            const mailtoLink = `mailto:${mailTo}?subject=${subject}&body=${body}`;
-
-            // show ready message briefly
+            // Show success message
             const success = document.getElementById('successMessage');
             success.style.display = 'block';
-            setTimeout(() => { success.style.display = 'none'; }, 2200);
 
-            // open mail client
-            window.location.href = mailtoLink;
-            return false;
+            // Open email client
+            window.location.href = mailToLink;
+
+            // Reset form
+            this.reset();
+
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                success.style.display = 'none';
+            }, 3000);
+        });
+
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
