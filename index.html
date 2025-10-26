@@ -9,7 +9,6 @@
     <meta name="description"
         content="V M Bhuvanesh — Embedded Systems | C/C++ | Linux | I2C/SPI/UART | Projects & Resume" />
     <style>
-        /* Your existing CSS remains the same */
         :root {
             --primary: #070607c7;
             --secondary: #07061d;
@@ -190,20 +189,13 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            text-align: center;
         }
 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow);
             background: var(--accent-light)
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--text);
-            padding: 9px 20px;
-            border-radius: 6px
         }
 
         .btn-resume {
@@ -565,10 +557,25 @@
                 height: 180px
             }
         }
+
+        /* Debug styles */
+        .debug-info {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 10000;
+        }
     </style>
 </head>
 
 <body>
+    <div class="debug-info" id="debugInfo">JavaScript: Loading...</div>
+
     <header>
         <div class="container">
             <nav class="navbar" aria-label="Main Navigation">
@@ -601,20 +608,21 @@
                             (PIC),peripherals (I2C/SPI/UART), and Linux command-line tooling. I build embedded projects
                             and low-levelsystem tools with a pragmatic, code-first approach.</p>
                         <div class="hero-buttons">
-                            <a href="#contact" class="btn" id="getInTouchBtn">Get In Touch</a>
-                            <!-- FIXED: Changed to button that creates resume -->
-                            <button class="btn btn-resume" id="downloadResumeBtn">Download Resume</button>
+                            <!-- FIXED: Simple anchor link for Get In Touch -->
+                            <a href="#contact" class="btn">Get In Touch</a>
+                            <!-- FIXED: Simple download link for Resume -->
+                            <a href="#" class="btn btn-resume" id="downloadResume">Download Resume</a>
                         </div>
                     </div>
 
                     <div class="hero-image" style="text-align:center;">
-                        <img src="me.jpg" alt="V M Bhuvanesh" class="profile-img" />
+                        <img src="me.jpg" alt="V M Bhuvanesh" class="profile-img" onerror="this.style.display='none'" />
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Rest of your HTML remains the same -->
+        <!-- Rest of your sections remain the same -->
         <!-- ABOUT -->
         <section id="about" class="about section">
             <div class="container">
@@ -906,119 +914,141 @@
     </footer>
 
     <script>
-        // Mobile nav toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        if (hamburger) {
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('show');
-                hamburger.classList.toggle('active');
-            });
+        // Debug function to show what's happening
+        function updateDebugInfo(message) {
+            const debugEl = document.getElementById('debugInfo');
+            if (debugEl) {
+                debugEl.textContent = 'JS: ' + message;
+            }
+            console.log('Debug:', message);
         }
 
-        // Close mobile nav on click
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.addEventListener('click', () => {
-                navLinks.classList.remove('show');
-                hamburger.classList.remove('active');
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            updateDebugInfo('Page loaded');
+
+            // Mobile nav toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                    hamburger.classList.toggle('active');
+                    updateDebugInfo('Mobile menu toggled');
+                });
+            }
+
+            // Close mobile nav on click
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.addEventListener('click', () => {
+                    if (navLinks) {
+                        navLinks.classList.remove('show');
+                        hamburger.classList.remove('active');
+                    }
+                });
             });
+
+            // Download Resume functionality - SIMPLE VERSION
+            const downloadBtn = document.getElementById('downloadResume');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    updateDebugInfo('Download button clicked');
+
+                    // Create resume content
+                    const resumeContent = `V M BHUVANESH - EMBEDDED SYSTEMS ENGINEER
+
+CONTACT INFORMATION:
+Email: vmbhuvanesh16@gmail.com
+Phone: +91 8861321832
+LinkedIn: linkedin.com/in/v-m-bhuvanesh
+GitHub: github.com/Bhuvanesh211
+
+EDUCATION:
+B.E. in Electronics & Communication Engineering
+JSS Science and Technology University, Mysuru, Karnataka
+CGPA: 8.27/10 (2019-2023)
+
+TECHNICAL SKILLS:
+• Programming: C, C++, Embedded C
+• Microcontrollers: PIC, 8051
+• Protocols: I2C, SPI, UART
+• Tools: Git, MPLAB, VS Code, Linux
+• Operating Systems: Linux, Windows
+
+PROJECTS:
+• LSB Image Steganography - C implementation for hiding messages in images
+• Lexical Analyzer - C tokenizer for source code analysis
+• Micro Oven Control - PIC16F877A based embedded system
+• Car Black Box - Vehicle data logger using PIC microcontroller
+
+CERTIFICATIONS:
+• Hands-on Introduction to Linux Commands and Shell Scripting - Coursera
+• 8051 Microcontroller Course - Bharat Acharya Education
+
+This is a text version of my resume. Please contact me for the full PDF version.`;
+
+                    // Create and download file
+                    const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'V_M_Bhuvanesh_Resume.txt';
+
+                    // Trigger download
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+
+                    updateDebugInfo('Resume downloaded');
+                });
+            } else {
+                updateDebugInfo('Download button not found');
+            }
+
+            // Contact form handler
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    updateDebugInfo('Contact form submitted');
+
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value.trim();
+                    const message = document.getElementById('message').value.trim();
+
+                    const mailToLink = `mailto:vmbhuvanesh16@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`)}`;
+
+                    // Show success message
+                    const success = document.getElementById('successMessage');
+                    if (success) {
+                        success.style.display = 'block';
+                    }
+
+                    // Open email client
+                    window.location.href = mailToLink;
+
+                    // Reset form
+                    this.reset();
+
+                    // Hide success message after 3 seconds
+                    setTimeout(() => {
+                        if (success) {
+                            success.style.display = 'none';
+                        }
+                    }, 3000);
+                });
+            }
+
+            updateDebugInfo('All event listeners attached');
         });
 
-        // Get In Touch button functionality
-        document.getElementById('getInTouchBtn').addEventListener('click', function (e) {
-            e.preventDefault();
-            document.getElementById('contact').scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-
-        // Download Resume functionality - creates a resume on the fly
-        document.getElementById('downloadResumeBtn').addEventListener('click', function () {
-            // Create a simple PDF content (you can replace this with your actual resume)
-            const resumeContent = `
-                V M BHUVANESH
-                Embedded Systems Engineer
-                
-                CONTACT:
-                Email: vmbhuvanesh16@gmail.com
-                Phone: +91 8861321832
-                LinkedIn: linkedin.com/in/v-m-bhuvanesh
-                GitHub: github.com/Bhuvanesh211
-                
-                EDUCATION:
-                B.E. in Electronics & Communication Engineering
-                JSS Science and Technology University, Mysuru
-                CGPA: 8.27/10 (2019-2023)
-                
-                TECHNICAL SKILLS:
-                • Programming: C, C++, Embedded C
-                • Microcontrollers: PIC, 8051
-                • Protocols: I2C, SPI, UART
-                • Tools: Git, MPLAB, VS Code, Linux
-                
-                PROJECTS:
-                • LSB Image Steganography - C implementation
-                • Lexical Analyzer - C tokenizer
-                • Micro Oven Control - PIC16F877A
-                • Car Black Box - Vehicle data logger
-                
-                CERTIFICATIONS:
-                • Hands-on Introduction to Linux - Coursera
-                • 8051 Microcontroller - Bharat Acharya Education
-            `;
-
-            // Create a blob and download link
-            const blob = new Blob([resumeContent], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'V_M_Bhuvanesh_Resume.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        });
-
-        // Contact form handler
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            const mailToLink = `mailto:vmbhuvanesh16@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`)}`;
-
-            // Show success message
-            const success = document.getElementById('successMessage');
-            success.style.display = 'block';
-
-            // Open email client
-            window.location.href = mailToLink;
-
-            // Reset form
-            this.reset();
-
-            // Hide success message after 3 seconds
-            setTimeout(() => {
-                success.style.display = 'none';
-            }, 3000);
-        });
-
-        // Smooth scrolling for all navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Fallback: If DOMContentLoaded doesn't fire, try this
+        window.addEventListener('load', function () {
+            updateDebugInfo('Window fully loaded');
         });
     </script>
 </body>
