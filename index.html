@@ -186,7 +186,9 @@
             border-radius: 6px;
             font-weight: 700;
             text-decoration: none;
-            transition: var(--transition)
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -201,6 +203,17 @@
             color: var(--text);
             padding: 9px 20px;
             border-radius: 6px
+        }
+
+        .btn-resume {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--text);
+        }
+
+        .btn-resume:hover {
+            background: var(--accent);
+            color: #fff;
         }
 
         .profile-img {
@@ -219,8 +232,9 @@
 
         section {
             scroll-margin-top: 72px;
+            padding: 60px 0;
+            /* Added padding for better spacing */
         }
-
 
         .section-title {
             text-align: center;
@@ -396,7 +410,8 @@
 
         .contact-icon {
             width: 54px;
-            height: 54;
+            height: 54px;
+            /* Fixed missing 'px' */
             border-radius: 12px;
             background: var(--card-bg);
             display: flex;
@@ -556,10 +571,6 @@
                 height: 180px
             }
         }
-        html, body {
-            scroll-behavior: smooth;
-        }
-
     </style>
 </head>
 
@@ -597,6 +608,7 @@
                             and low-levelsystem tools with a pragmatic, code-first approach.</p>
                         <div class="hero-buttons">
                             <a href="#contact" class="btn">Get In Touch</a>
+                            <!-- Fixed: Added proper btn-resume class -->
                             <a href="resume.pdf" class="btn btn-resume" download>Download Resume</a>
                         </div>
                     </div>
@@ -846,7 +858,7 @@
                                 a prefilled
                                 message addressed to me.</p>
 
-                            <form id="contactForm" onsubmit="return sendEmail(event)">
+                            <form id="contactForm">
                                 <div style="display:flex;gap:10px;margin-bottom:10px">
                                     <input class="form-control" id="name" name="name" type="text"
                                         placeholder="Your name" required>
@@ -915,22 +927,16 @@
         });
 
         // Contact form handler: open mail client with prefilled message
-        function sendEmail(e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const name = encodeURIComponent(document.getElementById('name').value.trim());
             const email = encodeURIComponent(document.getElementById('email').value.trim());
             const subject = encodeURIComponent(document.getElementById('subject').value.trim());
             const message = encodeURIComponent(document.getElementById('message').value.trim());
 
-            const mailTo = [
-                'vmbhuvanesh16@gmail.com', // recipient
-            ].join(',');
+            const mailTo = 'vmbhuvanesh16@gmail.com';
 
-            const body = encodeURIComponent(
-                'Name: ' + decodeURIComponent(name) + '\n' +
-                'Email: ' + decodeURIComponent(email) + '\n\n' +
-                decodeURIComponent(message)
-            );
+            const body = `Name: ${decodeURIComponent(name)}%0AEmail: ${decodeURIComponent(email)}%0A%0A${decodeURIComponent(message)}`;
 
             // Build mailto link
             const mailtoLink = `mailto:${mailTo}?subject=${subject}&body=${body}`;
@@ -943,7 +949,7 @@
             // open mail client
             window.location.href = mailtoLink;
             return false;
-        }
+        });
     </script>
 </body>
 
