@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>V M Bhuvanesh-Embedded Systems Engineer</title>
+    <meta name="description"
+        content="V M Bhuvanesh — Embedded Systems Engineer specialising in C/C++, PIC Microcontrollers, Linux, I2C/SPI/UART, ESP32 and AAOS." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor" aria-hidden="true">
+        <div id="cursor-dot"></div>
+        <div id="cursor-ring"></div>
+    </div>
+
+    <!-- Canvas Background -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- ── NAVBAR ── -->
+    <header id="header">
+        <div class="container">
+            <nav id="navbar">
+                <a href="#home" class="logo" id="logo">
+                    <span class="logo-bracket">&lt;</span>VMB<span class="logo-bracket">/&gt;</span>
+                </a>
+                <ul class="nav-links" id="navLinks" role="list">
+                    <li><a href="#home" data-nav>Home</a></li>
+                    <li><a href="#about" data-nav>About</a></li>
+                    <li><a href="#projects" data-nav>Projects</a></li>
+                    <li><a href="#experience" data-nav>Experience</a></li>
+                    <li><a href="#education" data-nav>Education</a></li>
+                    <li><a href="#certifications" data-nav>Certifications</a></li>
+                    <li><a href="#contact" data-nav>Contact</a></li>
+                    <li>
+                        <a href="V M Bhuvanesh_Embedded_Resume.pdf" download class="nav-resume" id="navResume">
+                            <i class="fa-solid fa-file-arrow-down"></i> Resume
+                        </a>
+                    </li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ── HERO ── -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-content">
+                        <div class="hero-badge" id="heroBadge">
+                            <span class="badge-dot"></span>
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>Available for Opportunities</span>
+                        </div>
+                        <p class="hero-greeting">Hello, I'm</p>
+                        <h1 class="hero-name" id="heroName">V M BHUVANESH</h1>
+                        <div class="hero-title-wrap">
+                            <span class="hero-title-static">I build things</span>
+                            <span class="hero-title-typed" id="typedText"></span>
+                            <span class="cursor-blink">|</span>
+                        </div>
+                        <p class="hero-desc">
+                            Embedded Systems enthusiast with hands-on experience in <strong>C/C++</strong> ,
+                            <strong>OOPs</strong> , <strong>DSA</strong> , <strong>I2C/SPI/UART/CAN Communication
+                                Protocols</strong> , <strong>Linux</strong> , <strong>Automotive Electronics</strong> and
+                            <strong>TinyML</strong> . I craft efficient, low-level solutions with a code-first mindset.
+                        </p>
+                        <div class="hero-pills">
+                            <span class="pill">C / C++</span>
+                            <span class="pill">OOPs</span>
+                            <span class="pill">DSA</span>
+                            <span class="pill">MICROCONTROLLER</span>
+                            <span class="pill">UART · I2C · SPI · CAN</span>
+                            <span class="pill">AUTOMOTIVE ELECTRONICS</span>
+                            <span class="pill">LINUX</span>
+                            <span class="pill">TINY ML</span>
+
+                        </div>
+                        <div class="hero-cta">
+                            <a href="#contact" class="btn-primary" id="ctaContact">
+                                <i class="fa-solid fa-paper-plane"></i> Get In Touch
+                            </a>
+                            <a href="V M Bhuvanesh_Embedded_Resume.pdf" download class="btn-outline" id="ctaResume">
+                                <i class="fa-solid fa-download"></i> Download Resume
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-num" data-count="6">0</div>
+                                <div class="stat-label">Projects Built</div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <div class="stat-num">8.27</div>
+                                <div class="stat-label">CGPA / 10</div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <div class="stat-num" data-count="3">0</div>
+                                <div class="stat-label">Certifications</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-photo-wrap">
+                        <div class="hero-photo">
+                            <img src="me.jpg" alt="V M Bhuvanesh — Embedded Systems Engineer"
+                                onerror="this.style.display='none';document.getElementById('photoFallback').style.display='flex'" />
+                            <div id="photoFallback" class="photo-fallback" style="display:none">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll indicator -->
+                <div class="scroll-indicator" aria-hidden="true">
+                    <div class="scroll-line"></div>
+                    <span>Scroll</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── ABOUT ── -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <span class="sec-tag">// about me</span>
+                    <h2 class="sec-title">Skills &amp; Profile</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="glass-card fade-up" style="transition-delay:.05s">
+                        <div class="card-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+                        <h3>Who I Am</h3>
+                        <p>Hi, I’m <strong>V M Bhuvanesh</strong>, an <strong>Electronics and Communication
+                                Engineer</strong> passionate about <strong>Embedded Systems</strong> and
+                            <strong>Automotive Electronics</strong>.</p>
+                        <p style="margin-top:12px">I have a strong foundation in <strong>C/C++, Data
+                                Structures</strong>, and <strong>Object-Oriented Programming</strong>, along with
+                            hands-on experience in <strong>Microcontrollers</strong> and <strong>Communication
+                                Protocols</strong> such as <strong>I2C, SPI, UART, and CAN</strong>. I enjoy working
+                            close to the hardware, building efficient systems, and solving real-world problems through
+                            embedded solutions.</p>
+                        <p style="margin-top:12px">My technical journey also includes working in <strong>Linux
+                                environments</strong>, debugging, and optimizing system performance for reliable and
+                            scalable designs. I am driven to build innovative and impactful systems in domains like
+                            automotive and intelligent embedded technologies.</p>
+
+                        <div class="contact-inline" style="margin-top:24px">
+                            <a href="mailto:vmbhuvanesh16@gmail.com"><i class="fa-solid fa-envelope"></i>
+                                vmbhuvanesh16@gmail.com</a>
+                            <a href="tel:+918861321832"><i class="fa-solid fa-phone"></i> +91 88613 21832</a>
+                            <a href="https://www.linkedin.com/in/v-m-bhuvanesh" target="_blank" rel="noopener"><i
+                                    class="fa-brands fa-linkedin"></i> V M Bhuvanesh</a>
+                        </div>
+                    </div>
+
+                    <div class="fade-up" style="transition-delay:.10s;display:flex;flex-direction:column;gap:32px">
+                        <div class="glass-card">
+                            <div class="card-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                            <h3>Technical Skills</h3>
+                            <div class="skills-list">
+                                <div class="skill-row">
+                                    <div class="skill-meta"><span class="skill-name">C / C++</span><span
+                                            class="skill-pct">90%</span></div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-w="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row">
+                                    <div class="skill-meta"><span class="skill-name">Microcontrollers (PIC, 8051,
+                                            ESP32)</span><span class="skill-pct">82%</span></div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-w="82"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row">
+                                    <div class="skill-meta"><span class="skill-name">Linux / Shell Scripting</span><span
+                                            class="skill-pct">75%</span></div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-w="75"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row">
+                                    <div class="skill-meta"><span class="skill-name">UART / I2C / SPI / CAN</span><span
+                                            class="skill-pct">75%</span></div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-w="75"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row">
+                                    <div class="skill-meta"><span class="skill-name">Data Structures &amp;
+                                            OOPs</span><span class="skill-pct">75%</span></div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-w="75"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row">
+                                    <div class="skill-meta"><span class="skill-name">Automotive Electronics</span><span
+                                            class="skill-pct">75%</span></div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-w="75"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card">
+                            <div class="card-icon"><i class="fa-solid fa-toolbox"></i></div>
+                            <h3>Tools &amp; Technologies</h3>
+                            <div class="tech-grid">
+                                <span class="tech-chip"><i class="fa-brands fa-linux"></i> Ubuntu</span>
+                                <span class="tech-chip"><i class="fa-brands fa-github"></i> Git</span>
+                                <span class="tech-chip"><i class="fa-solid fa-code"></i> VS Code</span>
+                                <span class="tech-chip"><i class="fa-solid fa-terminal"></i> CLI</span>
+                                <span class="tech-chip"><i class="fa-solid fa-eye"></i> Edge Impulse</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PROJECTS ── -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <span class="sec-tag">// projects</span>
+                    <h2 class="sec-title">Things I've Built</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="projects-grid">
+
+                    <article class="project-card fade-up" style="transition-delay:.05s">
+                        <div class="proj-header">
+                            <div class="proj-num">01</div>
+                            <div class="proj-links-top">
+                                <span class="proj-badge">Hardware</span>
+                            </div>
+                        </div>
+                        <h3>ESP32 Object Detection Module</h3>
+                        <p>Developed an object detection prototype using the ESP32 Camera Module for real-time image
+                            capture. Trained a custom Edge Impulse ML model deployed on-device for inference. Enabled
+                            live video feed via Wi-Fi streaming, optimised for embedded constraints.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">ESP32</span>
+                            <span class="proj-tag">Edge Impulse</span>
+                            <span class="proj-tag">Embedded C++</span>
+                            <span class="proj-tag">TinyML</span>
+                            <span class="proj-tag">Wi-Fi</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card fade-up" style="transition-delay:.10s">
+                        <div class="proj-header">
+                            <div class="proj-num">02</div>
+                            <div class="proj-links-top">
+                                <span class="proj-badge">Hardware</span>
+                            </div>
+                        </div>
+                        <h3>Wireless Robotic Crane Control System</h3>
+                        <p>Bidirectional wireless communication between controller and actuator nodes using 2.4 GHz
+                            NRF24L01 transceivers. Implemented packet-based command protocol with ACK/retry. Interfaced
+                            motor drivers via PWM.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">Embedded C++</span>
+                            <span class="proj-tag">NRF24L01</span>
+                            <span class="proj-tag">SPI</span>
+                            <span class="proj-tag">PWM</span>
+                            <span class="proj-tag">2.4GHz RF</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card fade-up" style="transition-delay:.15s">
+                        <div class="proj-header">
+                            <div class="proj-num">03</div>
+                            <div class="proj-links-top">
+                                <a href="https://github.com/Bhuvanesh211/Car_black_box" target="_blank" rel="noopener"
+                                    class="proj-gh-link" aria-label="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Car Black Box / EDR</h3>
+                        <p>Designed an Event Data Recorder using PIC16F877A to log critical vehicle parameters like
+                            speed,
+                            gear shifts, and collisions. Features an I2C-based EEPROM for persistent storage and a
+                            password-protected menu for log retrieval.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">PIC16F877A</span>
+                            <span class="proj-tag">I2C</span>
+                            <span class="proj-tag">EEPROM</span>
+                            <span class="proj-tag">RTC</span>
+                            <span class="proj-tag">Embedded C</span>
+                        </div>
+                        <a class="proj-link" href="https://github.com/Bhuvanesh211/Car_black_box" target="_blank"
+                            rel="noopener">
+                            <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <article class="project-card fade-up" style="transition-delay:.20s">
+                        <div class="proj-header">
+                            <div class="proj-num">04</div>
+                            <div class="proj-links-top">
+                                <a href="https://github.com/Bhuvanesh211/Lexical-Analyzer" target="_blank"
+                                    rel="noopener" class="proj-gh-link" aria-label="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Lexical Analyzer (C)</h3>
+                        <p>Built a lexical analyser in C to tokenise C source code into keywords, identifiers, literals,
+                            and operators. Focused on robust file handling, string parsing, and error handling for
+                            invalid tokens.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">C</span>
+                            <span class="proj-tag">Compilers</span>
+                            <span class="proj-tag">Tokenisation</span>
+                        </div>
+                        <a class="proj-link" href="https://github.com/Bhuvanesh211/Lexical-Analyzer" target="_blank"
+                            rel="noopener">
+                            <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <article class="project-card fade-up" style="transition-delay:.25s">
+                        <div class="proj-header">
+                            <div class="proj-num">05</div>
+                            <div class="proj-links-top">
+                                <a href="https://github.com/Bhuvanesh211/MICRO-OVEN-USING-PIC16F877A-MICROCONTROLLER"
+                                    target="_blank" rel="noopener" class="proj-gh-link" aria-label="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Micro Oven Control (PIC)</h3>
+                        <p>Designed an embedded controller using PIC16F877A. Implemented timer-controlled cooking modes,
+                            CLCD interface, and keypad input with interrupts for responsive user experience.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">Embedded C</span>
+                            <span class="proj-tag">PIC16F877A</span>
+                            <span class="proj-tag">Interrupts</span>
+                            <span class="proj-tag">CLCD</span>
+                        </div>
+                        <a class="proj-link"
+                            href="https://github.com/Bhuvanesh211/MICRO-OVEN-USING-PIC16F877A-MICROCONTROLLER"
+                            target="_blank" rel="noopener">
+                            <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <article class="project-card fade-up" style="transition-delay:.30s">
+                        <div class="proj-header">
+                            <div class="proj-num">06</div>
+                            <div class="proj-links-top">
+                                <a href="https://github.com/Bhuvanesh211/LSB_IMAGE_STEGANOGRAPHY-EMERTXE"
+                                    target="_blank" rel="noopener" class="proj-gh-link" aria-label="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>LSB Image Steganography</h3>
+                        <p>Implemented LSB-based steganography in C to embed and extract hidden messages inside images.
+                            Uses file pointers, bitwise operations, and optimised file I/O for secure data extraction.
+                        </p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">C</span>
+                            <span class="proj-tag">File I/O</span>
+                            <span class="proj-tag">Bitwise Ops</span>
+                        </div>
+                        <a class="proj-link" href="https://github.com/Bhuvanesh211/LSB_IMAGE_STEGANOGRAPHY-EMERTXE"
+                            target="_blank" rel="noopener">
+                            <i class="fa-brands fa-github"></i> View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── EXPERIENCE ── -->
+        <section id="experience" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <span class="sec-tag">// experience</span>
+                    <h2 class="sec-title">Work Experience</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item fade-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card glass-card">
+                            <div class="tl-header">
+                                <div>
+                                    <div class="tl-role">Internship — Embedded Systems &amp; AAOS</div>
+                                    <div class="tl-company"><i class="fa-solid fa-building"></i> Xeedo Technologies,
+                                        Bangalore</div>
+                                </div>
+                                <div class="tl-period">
+                                    <span class="edu-badge"><i class="fa-solid fa-calendar"></i> July 2025 –
+                                        Present</span>
+                                    <span class="edu-badge"><i class="fa-solid fa-location-dot"></i> Bangalore,
+                                        IN</span>
+                                </div>
+                            </div>
+                            <ul class="tl-list">
+                                <li>Tested ESP32 camera-based embedded system for image capture and monitoring</li>
+                                <li>Validated communication interfaces including <strong>UART, I2C and SPI</strong>
+                                    during bring-up</li>
+                                <li>Used <strong>Linux</strong> environment for device flashing, testing and debugging
+                                </li>
+                                <li>Exposed to <strong>Android Automotive OS (AAOS)</strong> and vehicle electronic
+                                    architecture</li>
+                            </ul>
+                            <div class="tl-tags">
+                                <span class="edu-badge"><i class="fa-solid fa-microchip"></i> ESP32</span>
+                                <span class="edu-badge"><i class="fa-brands fa-linux"></i> Linux</span>
+                                <span class="edu-badge"><i class="fa-solid fa-car"></i> AAOS</span>
+                                <span class="edu-badge"><i class="fa-solid fa-wave-square"></i> UART / I2C / SPI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── EDUCATION ── -->
+        <section id="education" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <span class="sec-tag">// education</span>
+                    <h2 class="sec-title">Academic Background</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="edu-list">
+                    <div class="edu-card glass-card fade-up">
+                        <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="edu-body">
+                            <div class="edu-degree">B.E. — Electronics &amp; Communication Engineering</div>
+                            <div class="edu-school">JSS Science and Technology University, Mysuru, Karnataka</div>
+                            <div class="edu-meta">
+                                <span class="edu-badge"><i class="fa-solid fa-calendar"></i> 2019 – 2023</span>
+                                <span class="edu-badge"><i class="fa-solid fa-star"></i> CGPA: 8.27 / 10</span>
+                            </div>
+                            <p class="edu-note"><strong>Relevant coursework:</strong> Computer Networks, Operating
+                                Systems, Automotive Electronics, Microcontrollers &amp; Embedded Systems</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- ── CERTIFICATIONS ── -->
+        <section id="certifications" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <span class="sec-tag">// certifications</span>
+                    <h2 class="sec-title">Certifications &amp; Activities</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="certs-grid">
+                    <div class="cert-card glass-card fade-up" style="transition-delay:.05s" id="certECEP">
+                        <div class="card-icon"><i class="fa-solid fa-award"></i></div>
+                        <h3>Emertxe Certified Embedded Professional (ECEP)</h3>
+                        <div class="cert-issuer">Emertxe Information Technologies</div>
+                        <a class="cert-verify" href="https://certificate.emertxe.com/?id=24009_006" target="_blank"
+                            rel="noopener">
+                            <i class="fa-solid fa-circle-check"></i> Verify Certificate <i
+                                class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="cert-card glass-card fade-up" style="transition-delay:.05s">
+                        <div class="card-icon"><i class="fa-brands fa-linux"></i></div>
+                        <h3>Linux Commands &amp; Shell Scripting</h3>
+                        <div class="cert-issuer">Coursera — IBM</div>
+                        <a class="cert-verify"
+                            href="https://www.coursera.org/account/accomplishments/verify/565AK436DM7T" target="_blank"
+                            rel="noopener">
+                            <i class="fa-solid fa-circle-check"></i> Verify Certificate <i
+                                class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="cert-card glass-card fade-up" style="transition-delay:.10s">
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3>8051 Microcontroller Course</h3>
+                        <div class="cert-issuer">Bharat Acharya Education</div>
+                        <a class="cert-verify"
+                            href="https://bharatacharya.graphy.com/verify-certificate?serialno=J7ORVSQR" target="_blank"
+                            rel="noopener">
+                            <i class="fa-solid fa-circle-check"></i> Verify Certificate <i
+                                class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="cert-card glass-card fade-up" style="transition-delay:.15s">
+                        <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
+                        <h3>Extracurricular Activities</h3>
+                        <div class="cert-issuer">Academic &amp; Community</div>
+                        <ul class="extras-list">
+                            <li><i class="fa-solid fa-robot"></i> IEEE Robotics Workshop — Participant</li>
+                            <li><i class="fa-solid fa-hands-helping"></i> NSS Camp — Volunteer</li>
+                            <li><i class="fa-solid fa-futbol"></i> Inter-Branch Football — Captain</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT ── -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <span class="sec-tag">// contact</span>
+                    <h2 class="sec-title">Let's Connect</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info fade-up" style="transition-delay:.05s">
+                        <p class="contact-desc">I'm actively looking for embedded systems / internship opportunities.
+                            Whether you have a question, project or just want to say hi — my inbox is always open.</p>
+                        <div class="contact-cards">
+                            <a class="contact-card" href="mailto:vmbhuvanesh16@gmail.com" id="ccEmail">
+                                <div class="cc-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div>
+                                    <div class="cc-label">Email</div>
+                                    <div class="cc-value">vmbhuvanesh16@gmail.com</div>
+                                </div>
+                            </a>
+                            <a class="contact-card" href="tel:+918861321832" id="ccPhone">
+                                <div class="cc-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <div class="cc-label">Phone</div>
+                                    <div class="cc-value">+91 88613 21832</div>
+                                </div>
+                            </a>
+                            <a class="contact-card" href="https://www.linkedin.com/in/v-m-bhuvanesh" target="_blank"
+                                rel="noopener" id="ccLinkedIn">
+                                <div class="cc-icon"><i class="fa-brands fa-linkedin"></i></div>
+                                <div>
+                                    <div class="cc-label">LinkedIn</div>
+                                    <div class="cc-value">V M Bhuvanesh</div>
+                                </div>
+                            </a>
+                            <a class="contact-card" href="https://github.com/Bhuvanesh211" target="_blank"
+                                rel="noopener" id="ccGithub">
+                                <div class="cc-icon"><i class="fa-brands fa-github"></i></div>
+                                <div>
+                                    <div class="cc-label">GitHub</div>
+                                    <div class="cc-value">Bhuvanesh211</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="form-card fade-up" style="transition-delay:.10s">
+                        <h3>Send a Message</h3>
+                        <p>Fill in the form — it'll open your email client with a pre-filled message.</p>
+                        <form id="contactForm" novalidate>
+                            <div class="form-row">
+                                <div class="field">
+                                    <label for="fname">Your Name</label>
+                                    <input type="text" id="fname" name="fname" placeholder="John Doe" required
+                                        autocomplete="name" />
+                                </div>
+                                <div class="field">
+                                    <label for="femail">Your Email</label>
+                                    <input type="email" id="femail" name="femail" placeholder="john@example.com"
+                                        required autocomplete="email" />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="fsubject">Subject</label>
+                                <input type="text" id="fsubject" name="fsubject"
+                                    placeholder="Opportunity / Collaboration" required />
+                            </div>
+                            <div class="field">
+                                <label for="fmessage">Message</label>
+                                <textarea id="fmessage" name="fmessage" placeholder="Hi Bhuvanesh, I'd like to..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary btn-full" id="submitBtn">
+                                <i class="fa-solid fa-paper-plane"></i> Send Message
+                            </button>
+                            <div id="successMsg" role="alert" aria-live="polite">✓ Opening your email client...</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>VMB<span class="logo-bracket">/&gt;</span>
+                </div>
+                <div class="footer-socials">
+                    <a class="social-btn" href="https://github.com/Bhuvanesh211" target="_blank" rel="noopener"
+                        aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a class="social-btn" href="https://www.linkedin.com/in/v-m-bhuvanesh" target="_blank"
+                        rel="noopener" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a class="social-btn" href="mailto:vmbhuvanesh16@gmail.com" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2025 V M Bhuvanesh — Embedded Software Engineer. Crafted with precision.</p>
+        </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+</body>
+
+</html>
